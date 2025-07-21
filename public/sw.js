@@ -1,10 +1,10 @@
 // Enhanced Service Worker for Amino Gym PWA with complete offline support
-const CACHE_NAME = "amino-gym-v5";
-const STATIC_CACHE = "amino-gym-static-v5";
-const DYNAMIC_CACHE = "amino-gym-dynamic-v5";
-const IMAGE_CACHE = "amino-gym-images-v5";
-const API_CACHE = "amino-gym-api-v5";
-const FONT_CACHE = "amino-gym-fonts-v5";
+const CACHE_NAME = "amino-gym-v6";
+const STATIC_CACHE = "amino-gym-static-v6";
+const DYNAMIC_CACHE = "amino-gym-dynamic-v6";
+const IMAGE_CACHE = "amino-gym-images-v6";
+const API_CACHE = "amino-gym-api-v6";
+const FONT_CACHE = "amino-gym-fonts-v6";
 
 // Critical resources to cache immediately for offline functionality
 const CRITICAL_RESOURCES = [
@@ -476,7 +476,7 @@ function createOfflineResponse() {
         const logo = document.querySelector('.logo');
         const logoFallback = document.querySelector('.logo-fallback');
         
-        // Test if logo image loads
+        // Test if logo image loads with cache busting
         const testImg = new Image();
         testImg.onload = function() {
           logo.style.display = 'block';
@@ -486,7 +486,7 @@ function createOfflineResponse() {
           logo.style.display = 'none';
           logoFallback.style.display = 'flex';
         };
-        testImg.src = '/yacin-gym-logo.png';
+        testImg.src = '/yacin-gym-logo.png?' + Date.now();
         
         // Auto-refresh when online
         window.addEventListener('online', function() {

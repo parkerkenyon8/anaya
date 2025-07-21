@@ -216,7 +216,7 @@ const HomePage = () => {
         if (timerStart) {
           const startTime = parseInt(timerStart, 10);
           const currentTime = new Date().getTime();
-          const thirtyMinutes = 30 * 60 * 1000; // 30 minutes in milliseconds
+          const oneWeek = 7 * 24 * 60 * 60 * 1000; // 1 week in milliseconds
 
           // Validate the timer values
           if (!isNaN(startTime) && !isNaN(currentTime) && startTime > 0) {
@@ -227,10 +227,10 @@ const HomePage = () => {
               startTime: new Date(startTime).toLocaleString(),
               currentTime: new Date(currentTime).toLocaleString(),
               elapsedMinutes: Math.floor(elapsedTime / (60 * 1000)),
-              shouldLock: elapsedTime >= thirtyMinutes,
+              shouldLock: elapsedTime >= tenMinutes,
             });
 
-            if (elapsedTime >= thirtyMinutes) {
+            if (elapsedTime >= oneWeek) {
               setIsContentLocked(true);
             } else {
               setIsContentLocked(false);

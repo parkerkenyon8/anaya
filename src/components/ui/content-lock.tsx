@@ -110,7 +110,7 @@ const ContentLock: React.FC<ContentLockProps> = ({ isVisible, onUnlock }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
                   >
-                    🔒 انتهت التجربة المجانية
+                    🔒 انتهت التجربة المجانية (أسبوع واحد)
                   </motion.h2>
                   <motion.p
                     className="text-slate-300 text-sm mb-4 sm:mb-6"
@@ -118,7 +118,8 @@ const ContentLock: React.FC<ContentLockProps> = ({ isVisible, onUnlock }) => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.7 }}
                   >
-                    انتهت فترة الاستخدام المجاني. أدخل رمز التفعيل للمتابعة
+                    انتهت فترة الاستخدام المجاني لمدة أسبوع واحد. أدخل رمز
+                    التفعيل للمتابعة
                   </motion.p>
                 </div>
 
@@ -219,7 +220,7 @@ const ContentLock: React.FC<ContentLockProps> = ({ isVisible, onUnlock }) => {
                       </span>
                     </div>
                     <p className="text-blue-300 text-base sm:text-lg font-bold">
-                      📞 +213 123 456 789
+                      📞 0794198099
                     </p>
                     <p className="text-slate-400 text-xs sm:text-sm mt-2">
                       اتصل بهذا الرقم للحصول على رمز التفعيل
