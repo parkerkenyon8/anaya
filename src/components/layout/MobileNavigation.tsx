@@ -98,7 +98,7 @@ const MobileNavigation = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setIsSettingsSidebarOpen(false)}
             />
 
@@ -257,7 +257,7 @@ const MobileNavigation = ({
         onClose={() => setIsQrScannerOpen(false)}
         onScan={handleScan}
       />
-      <div className="mobile-nav-container bg-gradient-to-br from-bluegray-800/95 to-bluegray-900/95 backdrop-blur-xl border-t border-bluegray-500/50 shadow-2xl lg:hidden">
+      <div className="mobile-nav-container bg-gradient-to-br from-bluegray-800/95 to-bluegray-900/95 backdrop-blur-xl border-t border-bluegray-500/50 shadow-2xl">
         {/* Enhanced gradient background */}
         <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/5 via-blue-500/5 to-purple-500/5" />
 

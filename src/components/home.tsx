@@ -420,223 +420,8 @@ const HomePage = () => {
       <Suspense fallback={null}>
         <NetworkStatus />
       </Suspense>
-      {/* Desktop Layout */}
-      <div className="hidden lg:flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Consistent Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-yellow-400/5 via-transparent to-blue-500/5" />
-        </div>
-
-        {/* Right Sidebar */}
-        <div className="relative w-64 bg-slate-800/95 border-l border-slate-700/50 z-10">
-          <Suspense fallback={null}>
-            <DesktopSidebar
-              onAddSessionClick={() => setShowAddSessionDialog(true)}
-              onAddMemberClick={() => setShowAddMemberDialog(true)}
-              onSettingsClick={() => setShowSettingsPage(true)}
-              onSearchClick={() => setActiveTab("attendance")}
-              onUserGuideClick={() => setShowUserGuide(true)}
-            />
-          </Suspense>
-        </div>
-
-        {/* Main Content Area */}
-        <div className="flex-1 flex flex-col relative z-10">
-          {/* Enhanced Top Navigation Bar - Hidden on mobile */}
-          <div className="hidden lg:hidden bg-gradient-to-r from-slate-800/95 to-slate-700/95 backdrop-blur-xl border-b border-slate-700/50 shadow-lg px-6 py-3"></div>
-
-          {/* Simple Tab Navigation */}
-          <div className="bg-slate-800/90 border-b border-slate-700/50 px-4 py-3 flex-shrink-0">
-            <Tabs
-              value={activeTab}
-              onValueChange={setActiveTab}
-              defaultValue="dashboard"
-              className="w-full"
-            >
-              <TabsList className="bg-slate-700/50 border border-slate-600/50 rounded-lg p-1 w-full justify-end">
-                <TabsTrigger
-                  value="dashboard"
-                  className="data-[state=active]:bg-slate-600 data-[state=active]:text-white rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-2 flex-row-reverse">
-                    <Home className="w-4 h-4" />
-                    <span>الرئيسية</span>
-                  </div>
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="attendance"
-                  className="data-[state=active]:bg-slate-600 data-[state=active]:text-white rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-2 flex-row-reverse">
-                    <Users className="w-4 h-4" />
-                    <span>الأعضاء</span>
-                  </div>
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="payments"
-                  className="data-[state=active]:bg-slate-600 data-[state=active]:text-white rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-2 flex-row-reverse">
-                    <CreditCard className="w-4 h-4" />
-                    <span>المدفوعات</span>
-                  </div>
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="today-attendance"
-                  className="data-[state=active]:bg-slate-600 data-[state=active]:text-white rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-2 flex-row-reverse">
-                    <Calendar className="w-4 h-4" />
-                    <span>حضور اليوم</span>
-                  </div>
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="pending-payments"
-                  className="data-[state=active]:bg-slate-600 data-[state=active]:text-white rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-2 flex-row-reverse">
-                    <DollarSign className="w-4 h-4" />
-                    <span>المدفوعات المعلقة</span>
-                  </div>
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="reports"
-                  className="data-[state=active]:bg-slate-600 data-[state=active]:text-white rounded-md px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-                >
-                  <div className="flex items-center gap-2 flex-row-reverse">
-                    <BarChart3 className="w-4 h-4" />
-                    <span>التقارير</span>
-                  </div>
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-
-          {/* Simple Content Area */}
-          <div className="flex-1 bg-slate-900 relative overflow-y-auto">
-            <Tabs
-              value={activeTab}
-              onValueChange={setActiveTab}
-              defaultValue="dashboard"
-              className="w-full h-full"
-            >
-              {/* Dashboard Content */}
-              <TabsContent
-                value="dashboard"
-                className="mt-0 h-full overflow-y-auto p-4"
-              >
-                <div className="space-y-4 max-w-6xl mx-auto">
-                  {/* Statistics Overview - First Priority */}
-                  <div>
-                    <Suspense
-                      fallback={
-                        <div className="h-20 bg-slate-800/50 rounded-lg animate-pulse" />
-                      }
-                    >
-                      <StatisticsOverview />
-                    </Suspense>
-                  </div>
-
-                  {/* Simple Welcome Header */}
-                  <div className="text-center mb-4">
-                    <div className="bg-slate-800/80 rounded-lg p-4 border border-slate-700/50">
-                      <h2 className="text-xl font-bold text-yellow-400 mb-2">
-                        لوحة التحكم الرئيسية
-                      </h2>
-                      <p className="text-slate-300 text-sm">
-                        إدارة شاملة وفعالة لصالتك الرياضية
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Simple Recent Activities */}
-                  <div className="bg-slate-800/60 rounded-lg p-4 border border-slate-700/50">
-                    <Suspense
-                      fallback={
-                        <div className="h-40 bg-slate-700/50 rounded-lg animate-pulse" />
-                      }
-                    >
-                      <RecentActivities limit={4} />
-                    </Suspense>
-                  </div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="attendance" className="mt-0 h-full">
-                <div className="h-full bg-slate-800/60 rounded-lg border border-slate-700/50 m-4">
-                  <Suspense
-                    fallback={
-                      <div className="h-full bg-slate-700/50 rounded-3xl animate-pulse" />
-                    }
-                  >
-                    <MembersList />
-                  </Suspense>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="payments" className="mt-0 h-full">
-                <div className="h-full bg-slate-800/60 rounded-lg border border-slate-700/50 m-4">
-                  <Suspense
-                    fallback={
-                      <div className="h-full bg-slate-700/50 rounded-3xl animate-pulse" />
-                    }
-                  >
-                    <PaymentsPage />
-                  </Suspense>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="today-attendance" className="mt-0 h-full">
-                <div className="h-full bg-slate-800/60 rounded-lg border border-slate-700/50 m-4">
-                  <Suspense
-                    fallback={
-                      <div className="h-full bg-slate-700/50 rounded-3xl animate-pulse" />
-                    }
-                  >
-                    <TodayAttendancePage
-                      onBack={() => setActiveTab("dashboard")}
-                    />
-                  </Suspense>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="pending-payments" className="mt-0 h-full">
-                <div className="h-full bg-slate-800/60 rounded-lg border border-slate-700/50 m-4">
-                  <Suspense
-                    fallback={
-                      <div className="h-full bg-slate-700/50 rounded-3xl animate-pulse" />
-                    }
-                  >
-                    <PendingPaymentsPage
-                      onBack={() => setActiveTab("dashboard")}
-                    />
-                  </Suspense>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="reports" className="mt-0 h-full">
-                <div className="h-full bg-slate-800/60 rounded-lg border border-slate-700/50 m-4">
-                  <Suspense
-                    fallback={
-                      <div className="h-full bg-slate-700/50 rounded-3xl animate-pulse" />
-                    }
-                  >
-                    <ReportsPage />
-                  </Suspense>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </div>
-      </div>
-      {/* Mobile Layout */}
-      <div className="lg:hidden">
+      {/* Mobile Layout - Now used for all screen sizes */}
+      <div>
         {/* Simple Background */}
         <div className="absolute inset-0 overflow-hidden">
           <BackgroundBlob className="w-[400px] h-[300px] -top-20 -left-20 opacity-10" />
@@ -727,7 +512,7 @@ const HomePage = () => {
             </Tabs>
           </div>
         </div>
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Now used for all screen sizes */}
         <Suspense fallback={null}>
           <TopMobileNavigation
             activeItem={activeTab}
@@ -856,8 +641,8 @@ const HomePage = () => {
       <Suspense fallback={null}>
         <PWAInstallBanner />
       </Suspense>
-      {/* Add padding to account for top and bottom navigation bars on mobile */}
-      <div className="pt-16 pb-32 lg:pt-0 lg:pb-0 md:hidden" />
+      {/* Add padding to account for top and bottom navigation bars */}
+      <div className="pt-16 pb-32" />
     </div>
   );
 };

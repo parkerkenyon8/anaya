@@ -656,7 +656,7 @@ const TopMobileNavigation = ({
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 bg-gradient-to-br from-bluegray-800/95 to-bluegray-900/95 backdrop-blur-xl border-b border-bluegray-500/50 shadow-2xl lg:hidden z-40 h-16 safe-area-top">
+    <div className="fixed top-0 left-0 right-0 bg-gradient-to-br from-bluegray-800/95 to-bluegray-900/95 backdrop-blur-xl border-b border-bluegray-500/50 shadow-2xl z-40 h-16 safe-area-top">
       {/* Enhanced gradient background with better mobile optimization */}
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/8 via-blue-500/8 to-purple-500/8" />
 
@@ -705,7 +705,7 @@ const TopMobileNavigation = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+              className="fixed inset-0 bg-black/50 z-50"
               onClick={() => setIsSettingsOpen(false)}
             />
 
