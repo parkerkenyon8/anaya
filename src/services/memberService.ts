@@ -8,6 +8,7 @@ export interface Member {
   membershipStatus: "active" | "expired" | "pending";
   lastAttendance: string;
   imageUrl?: string;
+  profileImage?: string;
   phoneNumber?: string;
   phone?: string;
   email?: string;
@@ -20,7 +21,6 @@ export interface Member {
   paymentStatus?: "paid" | "unpaid" | "partial";
   partialPaymentAmount?: number;
   note?: string;
-  profileImage?: string;
 }
 
 // Initialize the database with better configuration
@@ -113,6 +113,13 @@ export const addOrUpdateMemberWithId = async (
       paymentStatus: member.paymentStatus || "unpaid",
       sessionsRemaining: Number(member.sessionsRemaining) || 0,
       subscriptionPrice: Number(member.subscriptionPrice) || 0,
+      partialPaymentAmount: Number(member.partialPaymentAmount) || 0,
+      // Handle both imageUrl and profileImage fields for backward compatibility
+      imageUrl: member.imageUrl || member.profileImage || "",
+      profileImage: member.profileImage || member.imageUrl || "",
+      // Handle both phoneNumber and phone fields for backward compatibility
+      phoneNumber: member.phoneNumber || member.phone || "",
+      phone: member.phone || member.phoneNumber || "",
     };
 
     // Use a transaction-like approach for better reliability
@@ -204,7 +211,7 @@ export const resetMemberSessions = async (
   await addActivity({
     memberId: member.id,
     memberName: member.name,
-    memberImage: member.imageUrl,
+    memberImage: member.imageUrl || member.profileImage,
     activityType: "membership-renewal",
     timestamp: new Date().toISOString(),
     details: `تم إعادة تعيين الحصص - ${formatNumber(newSessionsRemaining)}/${formatNumber(newSessionsRemaining)} حصة`,
@@ -266,7 +273,7 @@ export const markAttendance = async (id: string): Promise<Member | null> => {
   await addActivity({
     memberId: member.id,
     memberName: member.name,
-    memberImage: member.imageUrl,
+    memberImage: member.imageUrl || member.profileImage,
     activityType: "check-in",
     timestamp: new Date().toISOString(),
     details:

@@ -479,7 +479,9 @@ const SettingsPage = ({ onBack, onNavigate }: SettingsPageProps) => {
                   member.lastAttendance ||
                   new Date().toISOString().split("T")[0],
                 imageUrl: member.imageUrl || member.profileImage || "",
+                profileImage: member.profileImage || member.imageUrl || "",
                 phoneNumber: member.phoneNumber || member.phone || "",
+                phone: member.phone || member.phoneNumber || "",
                 email: member.email || "",
                 membershipType: member.membershipType || "",
                 membershipStartDate: member.membershipStartDate || "",
@@ -498,6 +500,10 @@ const SettingsPage = ({ onBack, onNavigate }: SettingsPageProps) => {
                 )
                   ? member.paymentStatus
                   : "unpaid",
+                partialPaymentAmount: Math.max(
+                  0,
+                  Number(member.partialPaymentAmount) || 0,
+                ),
                 note: member.note || "",
               };
 
@@ -798,8 +804,10 @@ const SettingsPage = ({ onBack, onNavigate }: SettingsPageProps) => {
         membershipStatus: member?.membershipStatus || "pending",
         lastAttendance:
           member?.lastAttendance || new Date().toISOString().split("T")[0],
-        imageUrl: member?.imageUrl || "",
+        imageUrl: member?.imageUrl || member?.profileImage || "",
+        profileImage: member?.profileImage || member?.imageUrl || "",
         phoneNumber: member?.phoneNumber || member?.phone || "",
+        phone: member?.phone || member?.phoneNumber || "",
         email: member?.email || "",
         membershipType: member?.membershipType || "",
         membershipStartDate: member?.membershipStartDate || "",
@@ -808,6 +816,7 @@ const SettingsPage = ({ onBack, onNavigate }: SettingsPageProps) => {
         sessionsRemaining: Number(member?.sessionsRemaining) || 0,
         subscriptionPrice: Number(member?.subscriptionPrice) || 0,
         paymentStatus: member?.paymentStatus || "unpaid",
+        partialPaymentAmount: Number(member?.partialPaymentAmount) || 0,
         note: member?.note || "",
       }));
 
